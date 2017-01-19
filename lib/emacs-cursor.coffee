@@ -217,6 +217,7 @@ class EmacsCursor
 
   yank: ->
     killRing = @killRing()
+    killRing.syncClipboard()
     return if killRing.isEmpty()
     if @cursor.selection
       range = @cursor.selection.getBufferRange()

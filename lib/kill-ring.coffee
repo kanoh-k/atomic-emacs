@@ -59,4 +59,10 @@ class KillRing
     @currentIndex += @entries.length if @currentIndex < 0
     return @entries[@currentIndex]
 
+  syncClipboard: ->
+    text = atom.clipboard.read()
+    return if text.length == 0
+    if @entries.length == 0 || @entries[@entries.length - 1] != text
+      @push(text)
+
   @global = new KillRing
